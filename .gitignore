@@ -1,0 +1,6 @@
+venv/
+.pilintrc
+__pycache__/
+
+.vscode
+.idea

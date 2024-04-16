@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block name_web %}
+<p>Регистрация</p>
+{% endblock  %}
+{% block made %}
+<form>
+    <div class="input-box">
+        <input type="text" placeholder="Логин">
+        <i class='bx bxs-user'></i>
+    </div>
+    <div class="input-box">
+        <input type="text" placeholder="Фамилия Имя Отчество">
+        <i class='bx bxs-user'></i>
+    </div>
+    <div class="input-box">
+        <input type="password" placeholder="Пароль" required>
+        <i class='bx bxs-lock-alt'></i>
+    </div>
+    <button type="submit" class="btn">Вход</button>
+</form>
+{% endblock  %}
