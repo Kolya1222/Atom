@@ -8,7 +8,22 @@ User = get_user_model()
 class UserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
-        fields =("username", "full_name") 
+        fields =("username", "full_name")
+
+    def __init__(self, *args, **kwargs):
+        super(UserCreationForm,self).__init__(*args, **kwargs)
+        fields =("username", "full_name","password1","password2")
+        placehold = {
+            "username":"Логин",
+            "full_name":"Фамилия Имя Отчество",
+            "password1":"Пароль",
+            "password2":"Повторный ввод пароля",
+        }
+        for i in fields:
+            self.fields[i].widget.attrs.update({'class':'input-box'})
+            self.fields[i].widget.attrs.update({'placeholder':placehold[i]})
+            self.fields[i].label = ""
+            self.fields[i].widget.attrs.update({'label':""})
 
 class MyModelForm(forms.ModelForm):
     class Meta:
