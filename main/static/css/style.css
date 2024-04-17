@@ -22,6 +22,11 @@ body{
     font-size: 28px;
     text-align: center;
 }
+.district a{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
 .input-box{
     position: relative;
     width: 100%;

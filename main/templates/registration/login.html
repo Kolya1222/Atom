@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block name_web %}
+    <p>Авторизация</p>
+{% endblock %}
+{% block made %}
+    <form action="{% url 'main:login' %}" method="post">
+        {% csrf_token %}
+        {% if form.errors %}
+            <p>{{form.errors.error}} </p>
+        {% endif %}
+        {{ form }}
+        {% comment %} <div class="input-box">
+            <input type="text" placeholder="Фамилия Имя Отчество" required>
+            <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-box">
+            <input type="password" placeholder="Пароль" required>
+            <i class='bx bxs-lock-alt'></i>
+        </div>  {% endcomment %}
+        <button type="submit" class="btn">Вход</button> 
+        <div class="reg-link">
+            <p>У вас нет аккаунта? <a href="{% url 'main:register' %}">Зарегистрируйтесь</a></p>
+            <p>Забыли пароль? <a href="{% url 'main:password_reset' %}">Сбросить пароль</a></p>
+        </div>
+    </form>
+{% endblock  %}

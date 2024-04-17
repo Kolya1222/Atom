@@ -4,8 +4,10 @@
 <p>Регистрация</p>
 {% endblock  %}
 {% block made %}
-<form>
-    <div class="input-box">
+<form action="{% url "main:register" %}" method='post'>
+    {% csrf_token %}
+    {{form}}
+    {% comment %} <div class="input-box">
         <input type="text" placeholder="Логин">
         <i class='bx bxs-user'></i>
     </div>
@@ -16,7 +18,7 @@
     <div class="input-box">
         <input type="password" placeholder="Пароль" required>
         <i class='bx bxs-lock-alt'></i>
-    </div>
-    <button type="submit" class="btn">Вход</button>
+    </div>{% endcomment %}
+    <button type="submit" class="btn">Вход</button> 
 </form>
 {% endblock  %}

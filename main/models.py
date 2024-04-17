@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 class status(models.Model):
     stat = models.CharField(verbose_name="Статус",max_length=30)
@@ -30,3 +31,6 @@ class clients(models.Model):
 
     def __str__(self):
         return f'{self.first_name} {self.middle_name[0]}. {self.last_name[0]}.'
+    
+class User(AbstractUser):
+    pass

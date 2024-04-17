@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from main.models import status, clients
+from main.models import status, clients,User
 
-# admin.site.register(status)
+admin.site.register(User)
 @admin.register(status)
 class StatusAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('stat',)}
