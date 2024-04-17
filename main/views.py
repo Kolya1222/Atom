@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
-from main.models import clients
+from main.models import clients,status
 from django.views import View
 from django.contrib.auth import authenticate,login
+from django.views.generic.edit import CreateView
 
-from main.forms import UserCreationForm
+from main.forms import UserCreationForm,MyModelForm
 
 # Create your views here.
 
@@ -35,8 +36,18 @@ class Register(View):
         return render(request, self.template_name, context)
 
 def home(request):
-    client = clients.objects.all()
-    context = {
-        "content":client
-    }
-    return render(request,'main/user.html')
+    context = {}
+    if request.user.is_authenticated:
+        name=request.user.full_name
+        client = clients.objects.filter(user=name)
+        context = {
+            "context":client,
+            "text":name
+        }
+    return render(request,'main/user.html',context)
+
+class CreateMyModelView(CreateView):
+    model = clients
+    form_class = MyModelForm
+    template_name = 'main/test.html'
+    success_url = "/"

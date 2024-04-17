@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+{% block name_web %}
+<span>Добавление клиента</span>
+<a href={% url 'home' %}>Отмена</a>
+{% endblock  %}
+{% block made %}
+<form action="" method='post'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value=Добавить> 
+</form>
+{% endblock  %}

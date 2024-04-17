@@ -33,4 +33,4 @@ class clients(models.Model):
         return f'{self.first_name} {self.middle_name[0]}. {self.last_name[0]}.'
     
 class User(AbstractUser):
-    full_name = models.CharField(verbose_name="Фамилия Имя Отчество",max_length=150)
+    full_name = models.CharField(verbose_name="Фамилия Имя Отчество",max_length=150, default="")
