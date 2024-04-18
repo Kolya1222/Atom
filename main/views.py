@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from main.models import clients
 from django.views import View
 from django.contrib.auth import authenticate,login
@@ -23,10 +23,11 @@ class Register(View):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username,password=password)
             login(request,user)
+            return redirect('home')
         context = {
-            'form': form
-        }
-        
+            'form': form,
+            'title':"Привет"
+        }      
         return render(request, self.template_name, context)
 
 def home(request):
