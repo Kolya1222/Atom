@@ -26,7 +26,6 @@ class Register(View):
             return redirect('home')
         context = {
             'form': form,
-            'title':"Привет"
         }      
         return render(request, self.template_name, context)
 
